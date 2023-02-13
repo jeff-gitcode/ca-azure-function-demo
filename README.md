@@ -6,14 +6,12 @@ memfiredb
 ## Tech Stack
 
 - [x] Azure function
-- [x] .NET 7
+- [x] .NET 6
 - [x] DDD
 - [x] Mediator (CQRS)
-- [x] Serilog
-- [x] Fluent Validation
 - [x] Swagger
-- [x] Health Check
-- [x] RestSharp
+- [x] Logging
+- [x] CosmosDB
 
 ```powershell
 # create solution
@@ -68,7 +66,7 @@ $ dotnet add .\Azure.Function\ package Microsoft.Extensions.DependencyInjection
 func new --name HttpApi --template "HTTP trigger" --authlevel "anonymous"
 
 # run function
-$ func start
+$ func start --csharp
 
 # cosmos db emulator, download and install
 https://aka.ms/cosmosdb-emulator
@@ -76,9 +74,16 @@ https://aka.ms/cosmosdb-emulator
 # enable allow insecure localhost
 chrome://flags/#allow-insecure-localhost
 
+# cosmos db explorer
+https://localhost:8081/_explorer/index.html
+
 # swagger
 http://localhost:7071/api/swagger/ui
 
 # deploy function
 $ func azure functionapp publish <APP_NAME>
 ```
+
+![alt text](./Doc/cosmosdb.JPG)
+
+![alt text](./Doc/swagger.JPG)
