@@ -16,9 +16,12 @@ namespace Azure.Function
     {
         private readonly IUserUseCase _userUseCase;
 
-        public HttpApi(IHttpContextAccessor httpContextAccessor)
+        private readonly ILogger<HttpApi> _logger;
+
+        public HttpApi(IHttpContextAccessor httpContextAccessor, ILogger<HttpApi> logger)
         {
             _userUseCase = httpContextAccessor.HttpContext.RequestServices.GetService(typeof(IUserUseCase)) as IUserUseCase;
+            _logger = logger;
         }
 
         // [FunctionName("HttpApi")]

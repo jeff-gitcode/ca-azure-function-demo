@@ -22,6 +22,8 @@ public class Startup : FunctionsStartup
             .AddEnvironmentVariables()
             .Build();
 
+        builder.Services.AddLogging();
+
         builder.Services.AddSingleton<IConfiguration>(configuration);
 
         builder.Services.Configure<CosmosDbSettings>(configuration.GetSection(CosmosDbSettings.CosmosDb));
