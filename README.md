@@ -84,6 +84,8 @@ http://localhost:7071/api/swagger/ui
 $ func azure functionapp publish <APP_NAME>
 ```
 
+![alt text](./Doc/ca-azure-function-demo.gif)
+
 ![alt text](./Doc/cosmosdb.JPG)
 
 ![alt text](./Doc/swagger.JPG)
