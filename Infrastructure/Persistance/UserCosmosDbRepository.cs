@@ -18,7 +18,7 @@ public class UserCosmosDbRepository : IUserRepository
     {
         this._cosmosDbContainerFactory = cosmosDbContainerFactory;
         this._options = options;
-        this._container = this._cosmosDbContainerFactory.GetContainer(this._options.Value.Containers[0].Name)._container;
+        this._container = this._cosmosDbContainerFactory.GetContainer(this._options.Value.Containers[0].Name);
     }
 
     public async Task<List<UserDTO>> GetAllAsync()

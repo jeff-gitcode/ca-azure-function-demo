@@ -5,7 +5,7 @@ namespace Infrastructure.Config;
 
 public interface ICosmosDbContainerFactory
 {
-    ICosmosDbContainer GetContainer(string containerName);
+    Container GetContainer(string containerName);
 
     Task<Container> GetContainerAsync(string containerName);
 
@@ -38,14 +38,15 @@ public class CosmosDbContainerFactory : ICosmosDbContainerFactory
         return container.Container;
     }
 
-    public ICosmosDbContainer GetContainer(string containerName)
+    public Container GetContainer(string containerName)
     {
         if (_options.Containers.Where(x => x.Name == containerName) == null)
         {
             throw new ArgumentException($"Unable to find container: {containerName}");
         }
 
-        return new CosmosDbContainer(_client, _options.DatabaseName, containerName);
+        return _client.GetContainer(_options.DatabaseName, containerName);
+        // return new CosmosDbContainer(_client, _options.DatabaseName, containerName);
     }
 
     public async Task EnsureDbSetupAsync()

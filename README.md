@@ -20,7 +20,6 @@ $ dotnet new sln -o ca-azure-function-demo
 # switch to sln path
 $ cd ca-azure-function-demo
 
-
 # create domain project
 $ dotnet new classlib -o Domain
 
@@ -54,13 +53,13 @@ $ dotnet add .\Infrastructure\ reference .\Application\
 # build sln
 $ dotnet build
 
-# switch to azure function project
-$ cd Azure.Function
-
 # add support for dependency injection
 $ dotnet add .\Azure.Function\ package Microsoft.Azure.Functions.Extensions
 $ dotnet add .\Azure.Function\ package Microsoft.NET.Sdk.Functions
 $ dotnet add .\Azure.Function\ package Microsoft.Extensions.DependencyInjection
+
+# switch to azure function project
+$ cd Azure.Function
 
 # create a http function
 func new --name HttpApi --template "HTTP trigger" --authlevel "anonymous"
@@ -82,6 +81,15 @@ http://localhost:7071/api/swagger/ui
 
 # deploy function
 $ func azure functionapp publish <APP_NAME>
+
+# unit tests
+$ dotnet new xunit -o Azure.FunctionTest
+
+# add to sln
+$ dotnet sln add .\Azure.FunctionTest\Azure.FunctionTest.csproj
+
+# add moq
+$ dotnet add .\Azure.FunctionTest\ package Moq
 ```
 
 ![alt text](./Doc/ca-azure-function-demo.gif)
@@ -89,3 +97,5 @@ $ func azure functionapp publish <APP_NAME>
 ![alt text](./Doc/cosmosdb.JPG)
 
 ![alt text](./Doc/swagger.JPG)
+
+![alt text](./Doc/unit-test.JPG)
